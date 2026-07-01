@@ -33,6 +33,18 @@ uv.lock
 results/*.png
 results/*.pdf
 
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+
+# Experiment outputs
+code/*/output/
+code/*/fid_outputs/
+code/*/results/
+
 # Secrets
 .env
 .env.local
