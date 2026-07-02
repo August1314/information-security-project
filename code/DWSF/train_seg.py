@@ -63,7 +63,7 @@ def train_epoch(train_loader, model, optimizer, epoch):
     train_bce_loss = 0.
     train_iou_loss = 0.
     for i, (image, target, index, _) in enumerate((train_loader)):
-        image, target = image.cuda(), target.cuda()
+        image, target = image.to(device), target.to(device)
         d0, d1, d2, d3, d4, d5, d6 = model(image)
         loss_bce = muti_bce_loss_fusion(d0, d1, d2, d3, d4, d5, d6, target)
         loss_iou = muti_iou_loss_fusion(d0, d1, d2, d3, d4, d5, d6, target) * 0.1
@@ -86,7 +86,7 @@ def testcheckpoint(test_loader, model):
     val_iou_loss = 0.
     with torch.no_grad():
         for data, target,index,_ in test_loader:
-            data, target = data.cuda(), target.cuda()
+            data, target = data.cuda(), target.to(device)
             d0, d1, d2, d3, d4, d5, d6 = model(data)
             loss_bce = muti_bce_loss_fusion(d0, d1, d2, d3, d4, d5, d6, target)
             loss_iou = muti_iou_loss_fusion(d0, d1, d2, d3, d4, d5, d6, target) * 0.1
@@ -103,7 +103,7 @@ def save_checkpoint(state, epoch, file_name):
 
 def main(args):
     # build model
-    model = U2NETP(mode='train').cuda()
+    model = U2NETP(mode='train').to(device)
 
     # select optimizer
     if args.optimtype == 'SGD':

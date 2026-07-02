@@ -14,8 +14,11 @@ def setup_seed(seed):
     set random seed
     """
     torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    torch.cuda.manual_seed(seed)
+    try:
+        torch.cuda.manual_seed_all(seed)
+        torch.cuda.manual_seed(seed)
+    except Exception:
+        pass  # MPS: CUDA manual_seed 不可用，跳过
     np.random.seed(seed)
 
 

@@ -9,7 +9,7 @@ from networks.models.Discriminator import Discriminator
 from networks.models.Noiser import Noise
 from utils.util import setup_seed, save_images, decoded_message_error_rate_message_batch,  decoded_message_error_rate_bit_batch
 from utils.dataset import *
-os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
+# os.environ['CUDA_LAUNCH_BLOCKING'] = '1'  # MPS: 不需要
 setup_seed(100)
 
 if __name__ == '__main__':
@@ -32,7 +32,7 @@ if __name__ == '__main__':
         os.makedirs(save_image_path)
 
     # select device
-    device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
+    device = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
 
     transform = transforms.Compose([
         transforms.RandomCrop((H, W), pad_if_needed=True, padding_mode='reflect'),

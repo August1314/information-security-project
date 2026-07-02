@@ -8,14 +8,14 @@ from utils.load_test_setting import *
 test
 '''
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
 
 network = Network(H, W, message_length, noise_layers, device, batch_size, lr, with_diffusion)
 EC_path = result_folder + "models/EC_" + str(model_epoch) + ".pth"
 network.load_model_ed(EC_path)
 
 test_dataset = MBRSDataset(os.path.join(dataset_path, "test"), H, W)
-test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=0, pin_memory=True)
+test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=0)
 
 print("\nStart Testing : \n\n")
 

@@ -10,7 +10,7 @@ import math
 from networks.segmentation.model import U2NETP
 
 model = None
-device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
+device = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
 interpolatemode = 'bicubic'
 transform = transforms.Compose([
     transforms.ToTensor(),
@@ -38,7 +38,7 @@ def generate_mask(image):
     else:
         image = F.interpolate(image, (512,512), mode=interpolatemode)
     with torch.no_grad():
-        image = image.cuda()
+        image = image.to(device)
         d0, d1, d2, d3, d4, d5, d6 = model(image)
     return d0
 
@@ -173,7 +173,7 @@ def pad_split_seg_rectify(image, targetH=512, targetW=512):
     # rectify
     image_tensor, [height,width], angle = rectify(image_pad, mask[0])
 
-    return image_tensor.cuda(), [height,width], angle
+    return image_tensor.to(device), [height,width], angle
 
 
 def obtain_wm_blocks(image, targetH=512, targetW=512):
@@ -186,6 +186,6 @@ def obtain_wm_blocks(image, targetH=512, targetW=512):
     
     image_tensor = torch.vstack([image_tensor1, image_tensor2])
 
-    return image_tensor.cuda()
+    return image_tensor.to(device)
     
 

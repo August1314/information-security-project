@@ -98,7 +98,7 @@ if __name__ == '__main__':
     batch_size = 1
 
     # select device
-    device = torch.device('cuda:0' if torch.cuda.is_available() else "cpu")
+    device = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
 
     transform = transforms.Compose([
         transforms.ToTensor(),

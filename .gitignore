@@ -40,10 +40,15 @@ results/*.pdf
 *.safetensors
 *.bin
 
+# MPS patch backup
+code/.mps_backup/
+
 # Experiment outputs
 code/*/output/
 code/*/fid_outputs/
 code/*/results/
+code/*/pth/
+code/*/image/
 
 # Secrets
 .env

@@ -17,8 +17,9 @@ class Network:
 
 		self.discriminator = Discriminator().to(device)
 
-		self.encoder_decoder = torch.nn.DataParallel(self.encoder_decoder)
-		self.discriminator = torch.nn.DataParallel(self.discriminator)
+		# MPS: DataParallel 已移除，单 GPU 不需要
+		# self.encoder_decoder = torch.nn.DataParallel(self.encoder_decoder)
+		# self.discriminator = torch.nn.DataParallel(self.discriminator)
 
 		if only_decoder:
 			for p in self.encoder_decoder.module.encoder.parameters():
