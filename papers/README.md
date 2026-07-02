@@ -9,24 +9,23 @@
 | # | 论文 | 会议 | 年份 | CCF等级 | 代码 |
 |---|------|------|------|---------|------|
 | 1 | MBRS | ACM MM | 2021 | B | [GitHub](https://github.com/jzyustc/MBRS) |
-| 2 | CIN | ACM MM | 2022 | B | [GitHub](https://github.com/rmpku/CIN) |
+| 2 | DWSF | ACM MM | 2023 | B | [GitHub](https://github.com/bytedance/DWSF) |
 
 ## 对比维度
 
 两个方法都在鲁棒图像水印领域，都基于编码器-解码器架构，但技术路线不同：
 
 - **MBRS**：HiDDeN 风格 CNN 编码器-解码器，用真实+模拟 JPEG 小批次训练增强抗压缩鲁棒性
-- **CIN**：结合可逆神经网络与非可逆机制，用可逆网络保证水印嵌入的信息保留
+- **DWSF**：分散嵌入 + 分割同步 + 消息融合，支持任意分辨率图像，对几何攻击更鲁棒
 
 ### 评估指标
 
 - PSNR / SSIM（图像质量）
-- BER（比特错误率）
-- 鲁棒性：JPEG 压缩、裁剪、高斯模糊、噪声、亮度/对比度/饱和度调整
+- BER / Bit Accuracy（消息提取准确率）
+- 鲁棒性：JPEG 压缩、裁剪、旋转、高斯模糊、噪声、色彩变换
 
 ### 实验环境
 
-- Python 3.8+ / PyTorch 1.13
+- Python 3.8+ / PyTorch 2.x
 - 数据集：COCO2017
-- 训练：GPU（Colab 免费 T4 可满足）
-- 推理：Mac M4 CPU 可运行
+- 推理训练均可：Mac M4 MPS

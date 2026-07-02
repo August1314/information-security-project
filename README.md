@@ -8,7 +8,7 @@
 
 **选定论文**：
 - MBRS (ACM MM 2021, CCF-B)
-- CIN (ACM MM 2022, CCF-B)
+- DWSF (ACM MM 2023, CCF-B)
 
 **组员**：
 - 力航
@@ -18,13 +18,19 @@
 
 ```
 ├── papers/      # 论文 PDF 及阅读笔记
-├── code/        # 实验复现代码（MBRS + CIN）
+├── code/        # 实验复现代码（MBRS + DWSF）
 ├── report/      # 课程报告
 ├── results/     # 实验结果、图表、截图
 ├── README.md
 ├── .gitignore
 └── LICENSE
 ```
+
+## 实验环境
+
+- Mac M4 + MPS (Metal Performance Shaders)
+- PyTorch 2.12.1, Python 3.13
+- 数据集：COCO2017
 
 ## 时间节点
 
