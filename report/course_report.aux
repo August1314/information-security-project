@@ -1,0 +1,60 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}背景与动机}{3}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}数字水印与信息安全需求}{3}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}深度水印的基本框架}{4}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}选题动机}{4}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}论文方案介绍与方法关系}{5}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}MBRS 方法原理}{5}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}DWSF 方法原理}{6}{subsection.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 图 1 DWSF 官方框架图。 DWSF 将任意分辨率图像划分为多个局部候选块，在若干图像块中分散嵌入相同消息；提取阶段先通过同步模块定位水印区域，再由解码器和融合策略恢复最终消息。}}{7}{figure.caption.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}两种方案的关系与差异}{8}{subsection.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces 图 2 模型结构对比。 MBRS 采用固定尺寸图像块上的编码器、噪声层、解码器流程，核心创新在真实与模拟 JPEG 的混合 mini-batch 训练；DWSF 在编码器-解码器之外加入块选择、分散嵌入、同步定位和消息融合，更强调实际图像场景。}}{9}{figure.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}复现工作与代码实现}{9}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}项目结构}{9}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}运行环境}{10}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}MPS 适配与工程修改}{10}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}训练与评估流程}{11}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}可复现实验命令与产物对应关系}{11}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}评价指标}{12}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}实验结果与分析}{12}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}训练过程分析}{12}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 图 3 PSNR 收敛曲线。 MBRS 的 PSNR 上升更快，最终达到约 34.6 dB；DWSF 逐步提升至约 28.4 dB。说明 MBRS 在当前复现设置下具有更好的水印图像质量。}}{13}{figure.caption.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 图 4 BER 收敛曲线。 两个模型的 BER 都随训练下降。MBRS 在较早阶段已接近 0；DWSF 也在训练推进过程中逐渐收敛，说明其编码器-解码器在轻量训练后能够建立稳定消息通道。}}{13}{figure.caption.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 图 5 训练损失曲线。 Encoder loss 和 Decoder loss 均呈下降趋势，说明模型在图像重建和消息恢复两个目标上都完成了有效优化。}}{14}{figure.caption.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}无攻击条件下的图像质量}{14}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 图 6 水印样例可视化。 每组三列分别为原图、水印图和 10 倍放大的残差图。前三行对应 MBRS，后三行对应 DWSF。可以看到水印图与原图在整体视觉上仍保持一致，但残差图显示出编码器在局部像素中嵌入了可学习扰动。}}{15}{figure.caption.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}鲁棒性整体对比}{16}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 图 7 不同攻击下的 BER 对比。 红色虚线表示 BER=5\% 的参考阈值。两种模型均在 6/12 种攻击下达到 BER<5\%，在强压缩、强模糊和裁剪等扰动较强的条件下，BER 变化也清晰展示了不同攻击对水印信道的影响。}}{16}{figure.caption.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 图 8 不同攻击下的 PSNR 对比。 MBRS 在大部分条件下 PSNR 高于 DWSF，说明其水印图像质量更好；裁剪和亮度变化会显著降低 PSNR。}}{17}{figure.caption.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces 图 9 鲁棒性雷达图。 雷达图以 1-BER 作为鲁棒性得分，展示两种模型在典型攻击下的综合表现。两者在 clean 和噪声条件下得分较高，在裁剪和强压缩下得分较低。}}{17}{figure.caption.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}JPEG 压缩结果分析}{18}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}高斯噪声与模糊结果分析}{18}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}裁剪与亮度变化结果分析}{18}{subsection.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces 图 10 攻击效果展示。 图中展示了水印图像在噪声、模糊、压缩、裁剪和亮度变化下的视觉变化。部分攻击从视觉上看不一定严重，但对 BER 可能造成明显影响，说明水印鲁棒性不能只依赖肉眼观察，需要用消息恢复指标评价。}}{19}{figure.caption.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}参数量与效率分析}{19}{subsection.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces 图 11 参数量与性能权衡。 MBRS 参数量更大，Clean PSNR 更高；DWSF 参数量更小，Clean BER 同样为 0，体现出更好的轻量化潜力。}}{19}{figure.caption.13}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces 图 12 综合对比表。 MBRS 在图像质量、轻 JPEG 压缩和亮度降低条件下更优；DWSF 在参数量和部分亮度变化条件下具有优势，并具备面向任意分辨率图像的系统设计潜力。}}{20}{figure.caption.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}综合优缺点对比}{20}{subsection.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}复现设置与结果边界说明}{21}{subsection.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}代码运行效果截图}{21}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}环境与依赖检查截图}{21}{subsection.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces 图13 环境与依赖检查。 确认 PyTorch 2.12.1 安装正常，MPS 后端可用；MPS 适配补丁成功应用。}}{22}{figure.caption.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}MBRS 训练过程截图}{22}{subsection.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces 图14 MBRS 训练过程。 30 个 epoch 内 PSNR 从 18.0 dB 提升至 34.6 dB，BER 降至 0，训练耗时约 27.5 分钟。}}{22}{figure.caption.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}DWSF 训练过程截图}{22}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces 图15 DWSF 训练过程。 50 个 epoch 内 PSNR 从 9.1 dB 提升至 28.4 dB，BER 降至 0.0013，训练耗时约 65 分钟。}}{23}{figure.caption.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}鲁棒性测试截图}{23}{subsection.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces 图16 鲁棒性测试输出。 12 种攻击条件下两个模型的 PSNR 和 BER 完整结果。}}{24}{figure.caption.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}结果文件截图}{24}{subsection.5.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces 图17 生成的实验结果文件。 包含 11 张图表、18 张水印样本和实验数据 JSON。}}{25}{figure.caption.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}扩展方向与应用思考}{25}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}实验扩展方向}{25}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}可行的创新改进设计}{25}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}对安全应用的进一步思考}{26}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}成员贡献}{26}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}总结}{26}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}参考文献}{27}{section.9}\protected@file@percent }
+\gdef \@abspage@last{28}
