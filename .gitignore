@@ -43,6 +43,9 @@ results/*.pdf
 # MPS patch backup
 code/.mps_backup/
 
+# Training data
+data/
+
 # Experiment outputs
 code/*/output/
 code/*/fid_outputs/
