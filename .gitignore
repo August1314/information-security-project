@@ -53,6 +53,18 @@ code/*/results/
 code/*/pth/
 code/*/image/
 
+# LaTeX build artifacts
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.fls
+report/*.fdb_latexmk
+report/*.synctex.gz
+
+# Temporary check files
+tmp/
+
 # Secrets
 .env
 .env.local
